@@ -14,28 +14,26 @@
 
     <ul>
       <li>Categoría: <?= $recipe->category; ?></li>
-      <li>Niver de dificultad: <?= $recipe->difficulty_level; ?></li>
+      <li>Nivel de dificultad: <?= $recipe->difficulty_level; ?></li>
       <li>Tiempo de preparación: <?= convertInMinutes($recipe->cooking_time) ?></li>
     </ul>
 
     <h2>Ingredientes</h2>
     <?php $ingredients = explode("\n", $recipe->ingredients); ?>
   
-    <?php foreach ($ingredients as $itemList) : ?>
-      <?php if ($itemList === $ingredients[0]) : ?>
+    <strong><?= $ingredients[0] ?></strong>
 
-        <strong><?= $ingredients[0] ?></strong>
-
-      <?php else: ?>
-
-        <ul>
+    <ul>
+      <?php foreach ($ingredients as $index => $itemList) : ?>
+        <?php if ($index > 0) : ?>
+          
           <li>
             <?= $itemList; ?>
           </li>
-        </ul>
 
-      <?php endif; ?>
-    <?php endforeach; ?>
+        <?php endif; ?>
+      <?php endforeach; ?>
+    </ul>
 
     <h2>Modo de preparación</h2>
     <p><?= str_replace("\r\n\r", '</p><p>', $recipe->instructions); ?></p>
