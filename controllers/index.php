@@ -2,4 +2,8 @@
 
 $recipes = $app['database']->selectAll('receta_php');
 
-require 'views/activity_2.view.php';
+$latest_recipes = getLatest($recipes, 5);
+
+
+
+require 'views/index.view.php';
