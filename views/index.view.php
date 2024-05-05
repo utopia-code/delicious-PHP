@@ -12,8 +12,8 @@
     </div>
 
     <div>
-      <h1>Receta de <?= strtolower($recipe->name); ?></h1>
-
+      <h1><a href="recipe?id=<?= $recipe->id + 1; ?>">Receta de <?= strtolower($recipe->name); ?></a></h1>
+      
       <span><?= date($recipe->date); ?> </span>
 
       <ul>
