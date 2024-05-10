@@ -19,4 +19,47 @@ $recipesPerPageInView = array_slice($recipes, $startIndex, $recipesPerPage);
 
 
 
+$sortByName = $_GET['name'] ?? null;
+
+if ($sortByName) {
+
+    $sortRecipesByName = sortByName($recipes, $sortByName);
+
+    $recipesPerPageInView = $sortByName;
+}
+
+
+
+$sortByCookingTime = $_GET['cooking_time'] ?? null;
+
+if ($sortByCookingTime) {
+
+    $sortRecipesByCookingTime = sortByPreparationTime($recipes, $sortByCookingTime);
+
+    $recipesPerPageInView = $sortRecipesByCookingTime;
+} 
+
+
+$filterByCategory = $_GET['category'] ?? null;
+
+if ($filterByCategory) {
+
+    $filterRecipesByCategory = filterByCategory($recipes, $filterByCategory);
+
+    $recipesPerPageInView = $filterRecipesByCategory;
+} 
+
+$filterByDifficultyLevel = $_GET['difficulty_level'] ?? null;
+
+if ($filterByDifficultyLevel) {
+
+    $filterRecipesByDifficultyLevel = filterByDifficultyLevel($recipes, $filterByDifficultyLevel);
+
+    $recipesPerPageInView = $filterRecipesByDifficultyLevel;
+} 
+
+
+
+
+
 require 'views/recipes.view.php';

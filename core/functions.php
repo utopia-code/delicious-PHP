@@ -20,3 +20,45 @@ function setMaxWordsInView($text) {
   $totalWordsInText = explode(' ', $text);
   return  implode(' ', array_slice($totalWordsInText, 0, 30));
 }
+
+
+function sortByName($table, $order = 'asc') {
+  usort($table, function($a, $b) use ($order) {
+    if ($order === 'asc') {
+      return strcmp($a->name, $b->name);
+    } else {
+      return strcmp($b->name, $a->name);
+    }
+  });
+
+  return $table;
+}
+
+
+function sortByPreparationTime($table, $order = 'asc') {
+  usort($table, function($a, $b) use ($order) {
+    if ($order === 'asc') {
+      return strtotime($a->cooking_time) - strtotime($b->cooking_time);
+    } else {
+      return strtotime($b->cooking_time) - strtotime($a->cooking_time);
+    }
+  });
+
+  return $table;
+}
+
+function filterByCategory($table, $filter) {
+  $filteredRecipes = array_filter($table, function ($recipe) use ($filter) {
+      return $recipe->category === $filter;
+  });
+
+  return $filteredRecipes;
+}
+
+function filterByDifficultyLevel($table, $filter) {
+  $filteredRecipes = array_filter($table, function ($recipe) use ($filter) {
+      return $recipe->difficulty_level === $filter;
+  });
+
+  return $filteredRecipes;
+}

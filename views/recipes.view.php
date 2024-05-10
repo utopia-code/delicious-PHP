@@ -1,5 +1,47 @@
 <?php require('partials/head.php'); ?>
 
+<form action="" method="GET">
+
+  <label for="name">Ordenar por nombre:</label>
+  <select name="name" id="name">
+    <option value=""></option>
+    <option value="asc">Ascendente</option>
+    <option value="desc">Descendente</option>
+  </select>
+
+  <label for="cooking_time">Ordenar por tiempo de preparación:</label>
+  <select name="cooking_time" id="cooking_time">
+    <option value=""></option>
+    <option value="asc">Ascendente</option>
+    <option value="desc">Descendente</option>
+  </select>
+
+  <label for="difficulty_level">Filtrar por nivel de dificultad:</label>
+  <select name="difficulty_level" id="difficulty_level">
+    <option value=""></option>
+    <?php $listDifficultyLevel = []; ?>
+    <?php foreach ($recipes as $recipe) : ?>
+      <?php if (!in_array($recipe->difficulty_level, $listDifficultyLevel)) : ?>
+        <?php $listDifficultyLevel[] = $recipe->difficulty_level ?>
+        <option value="<?= $recipe->difficulty_level ?>"><?= $recipe->difficulty_level ?></option>
+      <?php endif; ?>
+    <?php endforeach; ?>
+  </select>
+
+  <label for="category">Filtrar por categoría:</label>
+  <select name="category" id="category">
+    <option value=""></option>
+    <?php $listCategories = []; ?>
+    <?php foreach ($recipes as $recipe) : ?>
+      <?php if (!in_array($recipe->category, $listCategories)) : ?>
+        <?php $listCategories[] = $recipe->category ?>
+        <option value="<?= $recipe->category ?>"><?= $recipe->category ?></option>
+      <?php endif; ?>
+    <?php endforeach; ?>
+  </select>
+
+  <button type="submit">Filtrar</button>
+</form>
 
 <?php foreach ($recipesPerPageInView as $recipe) : ?>
 
