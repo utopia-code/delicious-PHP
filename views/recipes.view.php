@@ -19,28 +19,25 @@
   <label for="difficulty_level">Filtrar por nivel de dificultad:</label>
   <select name="difficulty_level" id="difficulty_level">
     <option value=""></option>
-    <?php $listDifficultyLevel = []; ?>
-    <?php foreach ($recipes as $recipe) : ?>
-      <?php if (!in_array($recipe->difficulty_level, $listDifficultyLevel)) : ?>
-        <?php $listDifficultyLevel[] = $recipe->difficulty_level ?>
-        <option value="<?= $recipe->difficulty_level ?>"><?= $recipe->difficulty_level ?></option>
-      <?php endif; ?>
+
+    <?php foreach ($listOptionsDifficultyLevel as $difficulty_level) : ?>
+        <option value="<?= $difficulty_level ?>"><?= $difficulty_level ?></option>
     <?php endforeach; ?>
+
   </select>
 
   <label for="category">Filtrar por categoría:</label>
   <select name="category" id="category">
     <option value=""></option>
-    <?php $listCategories = []; ?>
-    <?php foreach ($recipes as $recipe) : ?>
-      <?php if (!in_array($recipe->category, $listCategories)) : ?>
-        <?php $listCategories[] = $recipe->category ?>
-        <option value="<?= $recipe->category ?>"><?= $recipe->category ?></option>
-      <?php endif; ?>
+
+    <?php foreach ($listOptionsCategories as $category) : ?>
+      <option value="<?= $category ?>"><?= $category ?></option>
     <?php endforeach; ?>
+
   </select>
 
   <button type="submit">Filtrar</button>
+  <a href="/delicious_php/recipes">Limpiar filtros</a>
 </form>
 
 <?php foreach ($recipesPerPageInView as $recipe) : ?>

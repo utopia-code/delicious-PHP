@@ -47,6 +47,7 @@ function sortByPreparationTime($table, $order = 'asc') {
   return $table;
 }
 
+
 function filterByCategory($table, $filter) {
   $filteredRecipes = array_filter($table, function ($recipe) use ($filter) {
       return $recipe->category === $filter;
@@ -54,6 +55,7 @@ function filterByCategory($table, $filter) {
 
   return $filteredRecipes;
 }
+
 
 function filterByDifficultyLevel($table, $filter) {
   $filteredRecipes = array_filter($table, function ($recipe) use ($filter) {
