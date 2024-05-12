@@ -8,3 +8,8 @@
 <body>
 
 <?php require('nav.php'); ?>
+
+
+<?php if (isset($_SESSION['username'])) : ?>
+    <h1>Bienvenido/a, <?= $_SESSION['username'] ?> </h1>
+<?php endif ?>

@@ -36,5 +36,18 @@ class QueryBuilder {
 
     return $statement->fetch(PDO::FETCH_ASSOC);
   }
+
+  public function selectByUsername($table, $username) {
+    
+    $query = "SELECT * FROM $table WHERE username = :username";
+
+    $statement = $this->pdo->prepare($query);
+
+    $statement->bindParam(':username', $username);
+
+    $statement->execute();
+
+    return $statement->fetch(PDO::FETCH_OBJ);
+  }
   
 }
