@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($user && password_verify($password, $user->password)) {
     
       session_start();
-      $_SESSION['username'] = $user->name;
+      $_SESSION['username'] = $user->username;
   
       header("Location: /delicious_php");
       exit();
