@@ -49,5 +49,29 @@ class QueryBuilder {
 
     return $statement->fetch(PDO::FETCH_OBJ);
   }
+
+  public function insertUser($table, $data) {
+    $keys = implode(', ', array_keys($data));
+    $values = ':' . implode(', :', array_keys($data));
+
+    $query = "INSERT INTO $table ($keys) VALUES ($values)";
+    
+    $statement = $this->pdo->prepare($query);
+
+    $statement->execute($data);
+  }
+
+  public function updateUser($table, $username, $data) {
+    $set = '';
+    foreach ($data as $key => $value) {
+      $set .= "$key = :$key, ";
+    }
+    $set = rtrim($set, ', ');
+
+    $query = "UPDATE $table SET $set WHERE username = :username";
+    $statement = $this->pdo->prepare($query);
+    $data['username'] = $username;
+    $statement->execute($data);
+  }
   
 }
