@@ -9,7 +9,8 @@
 
 <?php require('nav.php'); ?>
 
+<div class="container">
 
 <?php if (isset($_SESSION['username'])) : ?>
-    <h1>Bienvenido/a, <?= $_SESSION['username'] ?> </h1>
+    <h2 class="user-session">Bienvenido/a, <?= $_SESSION['username'] ?> </h2>
 <?php endif ?>
