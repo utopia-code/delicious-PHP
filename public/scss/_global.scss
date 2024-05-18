@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: $fontSize;
+    color: $bodyColor;
+}
+
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6 {
+    color: $fontColor;
+}
+
+.container {
+    @include template;
+}
+
+
+
+
+.user-session {
+}

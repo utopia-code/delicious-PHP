@@ -1,3 +1,35 @@
 body {
-  background-color: beige;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.8);
+}
+h1, h2, h3, h4, h5, h6 {
+  color: #8E3E63;
+}
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+nav {
+  background-color: #8E3E63;
+}
+nav ul {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  list-style: none;
+}
+nav li a {
+  display: block;
+  padding: 2rem;
+  text-decoration: none;
+  color: #F6FAB9;
+}
+nav li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
