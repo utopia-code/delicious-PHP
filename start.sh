@@ -1,7 +1,6 @@
 #!/bin/bash
 
-input_file="public/scss/style.scss"
-
+input_file="public/scss"
 output_file="public/style.css"
 
 compile_scss() {
@@ -13,6 +12,6 @@ compile_scss() {
 compile_scss
 
 
-fswatch -o "$input_file" | while read -r; do
+fswatch -o "$input_file" | while read -r event; do
     compile_scss
 done

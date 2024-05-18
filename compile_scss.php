@@ -5,6 +5,7 @@ require 'vendor/autoload.php';
 use ScssPhp\ScssPhp\Compiler;
 
 $scss = new Compiler();
+$scss->setImportPaths('public/scss/');
 
 $inputFile = 'public/scss/style.scss';
 
