@@ -1,23 +1,31 @@
 <?php
 
-session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
   $username = trim($_POST['username']);
   $password = trim($_POST['password']);
 
-  $user = $app['database']->selectByUsername('users_pec3', $username);
-
-  $password_db = password_hash($user->password, PASSWORD_BCRYPT);
-
-  if ($user && password_verify($password, $password_db)) {
-    $_SESSION['username'] = $user->name;
-    header("Location: /delicious_php");
-    exit();
+  if(empty($username) || empty($password)) {
+    $error = "Todos los campos son obligatorios";
   } else {
-    $error = "Incorrect credentials";
+    $user = $app['database']->selectByUsername('users_pec3', $username);
+
+    if ($user && password_verify($password, $user->password)) {
+    
+      session_start();
+      $_SESSION['username'] = $user->name;
+  
+      header("Location: /delicious_php");
+      exit();
+  
+    } else {
+      $error = "Las credenciales son incorrectas";
+    }
+  
   }
 
 }
+
 
 require 'views/login.view.php';
