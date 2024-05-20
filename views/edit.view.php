@@ -9,7 +9,7 @@
   <meta http-equiv="refresh" content="3;url=edit">
 <?php endif; ?>
 
-<form action="edit" method="POST">
+<form class="form-column" action="edit" method="POST">
   <div>
     <label for="name">Nombre:</label>
     <input type="text" id="name" name="name" value="<?= $user->name; ?>"><br>
@@ -30,7 +30,7 @@
     <input type="password" id="confirm_password" name="confirm_password"><br>
   </div>
 
-  <button type="submit">Actualizar Perfil</button>
+  <button class="button primary" type="submit">Actualizar Perfil</button>
 </form>
 
 <?php require('partials/footer.php'); ?>

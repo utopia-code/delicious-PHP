@@ -6,7 +6,7 @@
   <p class="error-message"><?php echo $error; ?></p>
 <?php endif; ?>
 
-<form action="signup" method="POST">
+<form class="form-column" action="signup" method="POST">
   <div>
     <label for="username">Username:</label>
     <input type="text" id="username" name="username"><br>
@@ -32,7 +32,7 @@
     <input type="password" id="confirm_password" name="confirm_password"><br>
   </div>
 
-  <button type="submit">Registrarse</button>
+  <button class="button primary" type="submit">Registrarse</button>
 </form>
 
 <?php require('partials/footer.php'); ?>
