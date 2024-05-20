@@ -1,5 +1,6 @@
 <?php
 
+$baseUrl = getenv('BASE_URL');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -16,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       session_start();
       $_SESSION['username'] = $user->username;
   
-      header("Location: /delicious_php");
+      header("Location: $baseUrl");
       exit();
   
     } else {

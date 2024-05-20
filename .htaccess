@@ -1,5 +1,6 @@
 RewriteEngine On
-RewriteBase /delicious_php/
+
+SetEnv BASE_URL /delicious_php/
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

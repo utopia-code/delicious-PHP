@@ -1,95 +1,105 @@
 <?php
-  $menu_default = [
-    [
-      'url' => '/delicious_php',
-      'name' => 'Home',
-      'target' => ''
-    ],
-    [
-      'url' => 'activity2',
-      'name' => 'Act_2',
-      'target' => ''
-    ],
-    [
-      'url' => 'recipes',
-      'name' => 'Recetas',
-      'target' => ''
-    ],
-    [
-      'url' => 'api/recipes/1',
-      'name' => 'API_recetas',
-      'target' => '_blank'
-    ],
-    [
-      'url' => 'api/recipe/1',
-      'name' => 'API_receta',
-      'target' => '_blank'
-    ],
-    [
-      'url' => 'login',
-      'name' => 'Login',
-      'target' => ''
-    ],
-    [
-      'url' => 'signup',
-      'name' => 'Sign up',
-      'target' => ''
-    ]
-  ];
 
-  $menu_user = [
-    [
-      'url' => '/delicious_php',
-      'name' => 'Home',
-      'target' => ''
-    ],
-    [
-      'url' => 'activity2',
-      'name' => 'Act_2',
-      'target' => ''
-    ],
-    [
-      'url' => 'recipes',
-      'name' => 'Recetas',
-      'target' => ''
-    ],
-    [
-      'url' => 'api/recipes/1',
-      'name' => 'API_recetas',
-      'target' => '_blank'
-    ],
-    [
-      'url' => 'api/recipe/1',
-      'name' => 'API_receta',
-      'target' => '_blank'
-    ],
-    [
-      'url' => 'edit',
-      'name' => 'Perfil de usuario',
-      'target' => ''
-    ],
-    [
-      'url' => 'logout',
-      'name' => 'Logout',
-      'target' => ''
-    ]
-  ];
+$baseUrl = getenv('BASE_URL');
 
-  $current_url = $_SERVER['REQUEST_URI'];
-  $base_url = '/delicious_php';
+$menu_default = [
+  [
+    'url' => $baseUrl,
+    'name' => 'Home',
+    'target' => ''
+  ],
+  [
+    'url' => 'activity2',
+    'name' => 'Act_2',
+    'target' => ''
+  ],
+  [
+    'url' => 'recipes',
+    'name' => 'Recetas',
+    'target' => ''
+  ],
+  [
+    'url' => 'api/recipes/1',
+    'name' => 'API_recetas',
+    'target' => '_blank'
+  ],
+  [
+    'url' => 'api/recipe/1',
+    'name' => 'API_receta',
+    'target' => '_blank'
+  ],
+  [
+    'url' => 'login',
+    'name' => 'Login',
+    'target' => ''
+  ],
+  [
+    'url' => 'signup',
+    'name' => 'Sign up',
+    'target' => ''
+  ]
+];
 
-  function isActive($url, $current_url) {
-    global $base_url;
-    $full_url = $url === '/delicious_php' ? $base_url . '/' : $base_url . '/' . $url;
-    return $full_url === $current_url ? 'class="active"' : '';
+$menu_user = [
+  [
+    'url' => $baseUrl,
+    'name' => 'Home',
+    'target' => ''
+  ],
+  [
+    'url' => 'activity2',
+    'name' => 'Act_2',
+    'target' => ''
+  ],
+  [
+    'url' => 'recipes',
+    'name' => 'Recetas',
+    'target' => ''
+  ],
+  [
+    'url' => 'api/recipes/1',
+    'name' => 'API_recetas',
+    'target' => '_blank'
+  ],
+  [
+    'url' => 'api/recipe/1',
+    'name' => 'API_receta',
+    'target' => '_blank'
+  ],
+  [
+    'url' => 'edit',
+    'name' => 'Perfil de usuario',
+    'target' => ''
+  ],
+  [
+    'url' => 'logout',
+    'name' => 'Logout',
+    'target' => ''
+  ]
+];
+
+$current_url = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
+
+function isActive($url, $current_url) {
+  global $baseUrl;
+
+  if (empty($current_url)) {
+    return '';
   }
 
-  function setMenu($menu) {
-    global $current_url;
-    foreach($menu as $link) {
-      echo '<li><a href="' . $link['url'] . '" ' . isActive($link['url'], $current_url). 'target="' . $link['target'] . '" >' . $link['name'] . '</a></li>';
-    }
+  $current_path = parse_url($current_url, PHP_URL_PATH);
+  $full_url_path = $url === $baseUrl ? $baseUrl : $baseUrl . $url;
+  $menu_path = parse_url($full_url_path, PHP_URL_PATH);
+  return $menu_path === $current_path ? 'class="active"' : '';
+}
+
+function setMenu($menu) {
+  global $current_url;
+  foreach($menu as $link) {
+    echo '<li><a href="' . $link['url'] . '" ' . isActive($link['url'], $current_url). 'target="' . $link['target'] . '" >' . $link['name'] . '</a></li>';
   }
+}
+
 ?>
 
 <nav>

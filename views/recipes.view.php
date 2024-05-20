@@ -49,7 +49,7 @@
   <div class="row center">
     <button class="button primary" type="submit">Filtrar</button>
     <div class="button secondary">
-      <a href="/delicious_php/recipes">Limpiar filtros</a>
+      <a href="<?= $baseUrl; ?>recipes">Limpiar filtros</a>
     </div>
   </div>
   

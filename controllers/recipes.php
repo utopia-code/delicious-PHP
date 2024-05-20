@@ -1,4 +1,5 @@
 <?php
+$baseUrl = getenv('BASE_URL');
 
 $sortByName = $_GET['name'] ?? null;
 $sortByCookingTime = $_GET['cooking_time'] ?? null;
