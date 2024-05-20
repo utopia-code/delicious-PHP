@@ -1,11 +1,18 @@
 $primary: #8E3E63;
 $secondary: #F6FAB9;
-$highlight: #D2649A;
+$defaultBg: #D2649A;
 $highlight: #CAE6B2;
 
 $bgNav: $primary;
 $colorNav: $secondary; 
 
+$bgDefault: $defaultBg;
+$bgHighlight: $highlight;
+
+$fontFamily: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 $fontColor: $primary;
 $bodyColor: rgba(0,0,0,.8);
 $fontSize: 16px;
+
+$mobileBreakpoint: 767.89px;
+$desktopBreakpoint: 900px;

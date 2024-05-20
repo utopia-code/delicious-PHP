@@ -1,0 +1,193 @@
+.card-component {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 20px;
+
+    @media screen and (min-width: $mobileBreakpoint) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media screen and (min-width: $desktopBreakpoint) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+.card {
+    background-color: rgba($highlight, .3);
+
+    .card-img img {
+        aspect-ratio: 5/3;
+        object-fit: cover;
+        height: auto;
+        width: 100%;
+    }
+
+    .card-content {
+        padding: 20px;
+    }
+    
+    .card-title {
+        margin-top: 0;
+
+        a {
+            text-decoration: none;
+            color: $primary;
+
+            &:hover {
+                color: lighten($primary, 15%);
+            }
+        }
+    }
+
+    .card-date {
+        font-style: italic;
+        font-size: .9rem;
+    }
+
+}
+
+.page-content {
+    display: grid;
+    grid-template-columns: auto;
+
+    @media screen and (min-width: $desktopBreakpoint) {
+        grid-template-columns: minmax(auto, 60%) 1fr;
+        gap: 20px;
+
+        .page-img, 
+        .page-description {
+            grid-column-start: 1;
+            grid-column-end: 2;
+        }
+
+        .page-aside {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 1;
+            grid-row-end: 3;
+        }
+    }
+
+    @media screen and (min-width: 1100px) {
+        grid-template-columns: minmax(auto, 65%) 1fr;
+    }
+
+    .page-aside {
+        background-color: rgba($highlight, .3);
+        padding: 20px;
+        
+        @media screen and (max-width: $desktopBreakpoint) { 
+            margin-top: 30px;
+        }
+    }
+}
+
+.nav-pagination {
+    margin-top: 20px;
+    background-color: $bgDefault;
+    text-align: center;
+    padding: 2px 0;
+
+    span,
+    a {
+        display: inline-block;
+        padding: 10px;
+        background-color: rgba($bgHighlight, .8);
+        color: $fontColor;
+        text-decoration: none;
+
+        &:hover:not(.disabled):not(.active) {
+            background-color: darken($bgHighlight, 15%);
+        }
+    }
+
+    .disabled {
+        color: rgba($bodyColor, .5);
+        background-color: rgba(255,255,255, .4);
+    }
+
+    .active {
+        background-color: $bgHighlight;
+    }
+}
+
+form {
+
+    .form-container{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+
+        @media screen and (min-width: 600px) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media screen and (min-width: $mobileBreakpoint) {
+            grid-template-columns: 1fr 1fr;
+        }
+    
+        @media screen and (min-width: $desktopBreakpoint) {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+    }
+
+    .form-field {
+        display: flex;
+        flex-direction: column;
+
+        label {
+            margin-bottom: 5px;
+            @media screen and (min-width: $desktopBreakpoint) and (max-width: 1130px) {
+                min-height: 32px;
+            }
+        }
+    }
+
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: $bgDefault;
+        color: $highlight;
+        font-size: 1rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        line-height:1;
+        margin: 30px 5px 40px;
+        cursor: pointer;
+        transition: background-color .15s ease;
+
+
+        &.primary {
+            background-color: $bgDefault;
+            color: $secondary;
+
+            &:hover {
+                background-color: darken($bgDefault, 20%);
+            }
+        }
+
+        &.secondary {
+            color: $primary;
+            background-color: $highlight;
+
+            &:hover {
+                background-color: darken($highlight, 10%);
+            }
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+    }
+
+    &.form-column {
+        div {
+            margin-bottom: 10px;
+        }
+
+        .button {
+            margin: 20px 0 0;
+        }
+    }
+}

@@ -1,0 +1,100 @@
+
+nav {
+    background-color: $bgNav;
+    ul {
+        @include template;
+        display: flex;
+        list-style: none;
+    }
+
+    li {
+        margin-bottom: 0;
+
+        a {
+            display: block;
+            text-decoration: none;
+            color: $colorNav;
+
+            @media screen and (min-width: $mobileBreakpoint) {
+                padding: 2rem 1rem;
+            }
+
+            @media screen and (min-width: $desktopBreakpoint) {
+                padding: 2rem 1.5rem;
+            }
+        
+            @media screen and (min-width: 960px) {
+                padding: 2rem;
+            }
+            
+
+            &:hover {
+                background-color: rgba($colorNav, .2);
+            }
+
+            &.active {
+                background-color: $colorNav;
+                color: $bgNav;
+            }
+        }
+    }
+
+    .icon-menu {
+        display: none;
+    }
+
+    @media screen and (max-width: $mobileBreakpoint) {
+        .icon-menu {
+            display: block;
+            text-align: right;
+            cursor: pointer;
+        }
+
+        ul {
+            flex-direction: column;
+            padding: 0;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background-color: $bgNav;
+            width: 100%;
+            transform: translateX(-100%);
+            transition: transform .15s ease-in-out;
+
+            &.is-open {
+                transform: translateX(0);
+            }
+        }
+
+        li a {
+            padding: 10px 20px;
+        }
+
+
+        .burger-menu {
+            rect {
+                fill: $secondary;
+            }
+
+            .bar1,
+            .bar2,
+            .bar3 {
+                transition: transform .15s ease-in-out;
+            }
+
+            &.open {
+                .bar1 {
+                    transform: translateY(20px) rotate(45deg);
+                }
+                  
+                .bar2 {
+                    opacity: 0;
+                }
+                  
+                .bar3 {
+                    transform: translateY(-20px) rotate(-45deg);
+                }
+            }
+        }
+    }
+}
