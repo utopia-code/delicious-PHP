@@ -80,11 +80,12 @@ nav {
             .bar2,
             .bar3 {
                 transition: transform .15s ease-in-out;
+                transform-origin: center center;
             }
 
             &.open {
                 .bar1 {
-                    transform: translateY(20px) rotate(45deg);
+                    transform: translateY(20.5px) translateX(-20.5px) rotate(45deg);
                 }
                   
                 .bar2 {
@@ -92,7 +93,7 @@ nav {
                 }
                   
                 .bar3 {
-                    transform: translateY(-20px) rotate(-45deg);
+                    transform: translateY(-20.5px) translateX(-20.5px) rotate(-45deg);
                 }
             }
         }

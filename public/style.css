@@ -120,15 +120,16 @@ nav .icon-menu {
   }
   nav .burger-menu .bar1, nav .burger-menu .bar2, nav .burger-menu .bar3 {
     transition: transform 0.15s ease-in-out;
+    transform-origin: center center;
   }
   nav .burger-menu.open .bar1 {
-    transform: translateY(20px) rotate(45deg);
+    transform: translateY(20.5px) translateX(-20.5px) rotate(45deg);
   }
   nav .burger-menu.open .bar2 {
     opacity: 0;
   }
   nav .burger-menu.open .bar3 {
-    transform: translateY(-20px) rotate(-45deg);
+    transform: translateY(-20.5px) translateX(-20.5px) rotate(-45deg);
   }
 }
 .card-component {
