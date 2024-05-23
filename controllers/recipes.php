@@ -53,7 +53,6 @@ if ($currentPage < 1) {
 }
 
 $startIndex = ($currentPage - 1) * $recipesPerPage;
-$endIndex = $startIndex + $recipesPerPage;
 $recipesPerPageInView = array_slice($totalListRecipes, $startIndex, $recipesPerPage);
 
 
